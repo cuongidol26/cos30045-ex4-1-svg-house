@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exercise 4.1 SVG house</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Barlow+Condensed:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/house.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a class="site-title" href="../index.html">COS30045 Demonstration 2</a>
+      <nav aria-label="Exercises">
+        <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../ex4-1-svg-house/index.html" aria-current="page">4.1 SVG house</a></li>
+        <li><a href="../ex4-bar-chart/index.html">4.3–4.7 Bar chart</a></li>
+        <li><a href="../ex5-multichart/index.html">5 Multi-chart</a></li>
+        <li><a href="../ex6-interactivity/index.html">6 Interactivity</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1>Exercise 4.1: a house drawn with SVG</h1>
+    <p class="lede">Every part of this picture is an SVG shape written by hand: rect, circle, ellipse, line, polyline, polygon, path and text.</p>
+
+    <div class="chart-block">
+      <svg id="house" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="house-title">
+        <title id="house-title">A house with a garden, built from SVG shapes</title>
+      
+        <rect x="0" y="0" width="600" height="280" fill="#cfe6f2" />
+        <rect x="0" y="280" width="600" height="120" fill="#9cc979" />
+      
+        <circle cx="520" cy="70" r="36" fill="#f2b705" />
+        <ellipse cx="150" cy="70" rx="60" ry="22" fill="#ffffff" />
+        <ellipse cx="195" cy="58" rx="40" ry="18" fill="#ffffff" />
+      
+        <rect x="320" y="95" width="28" height="60" fill="#8a4b3a" stroke="#4a2f25" stroke-width="2" />
+        <path d="M 334 90 q -14 -14 0 -28 q 14 -14 0 -28" fill="none" stroke="#8c979c" stroke-width="5" stroke-linecap="round" />
+      
+        <rect x="170" y="170" width="220" height="150" fill="#ead9b6" stroke="#5a4636" stroke-width="3" />
+        <polygon points="150,175 280,90 410,175" fill="#b5442f" stroke="#5a4636" stroke-width="3" stroke-linejoin="round" />
+      
+        <rect x="258" y="245" width="44" height="75" rx="3" fill="#2f6f8f" stroke="#5a4636" stroke-width="2" />
+        <circle cx="294" cy="285" r="3" fill="#f2b705" />
+        <text x="280" y="236" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#5a4636">42</text>
+      
+        <g class="windows" fill="#fff8dc" stroke="#5a4636" stroke-width="3">
+          <g transform="translate(195, 200)">
+            <rect width="45" height="40" />
+            <line x1="22.5" y1="0" x2="22.5" y2="40" />
+            <line x1="0" y1="20" x2="45" y2="20" />
+          </g>
+          <g transform="translate(320, 200)">
+            <rect width="45" height="40" />
+            <line x1="22.5" y1="0" x2="22.5" y2="40" />
+            <line x1="0" y1="20" x2="45" y2="20" />
+          </g>
+        </g>
+      
+        <path d="M 262 320 C 252 350, 212 370, 200 400 L 262 400 C 272 370, 300 350, 298 320 Z" fill="#c9b48f" />
+      
+        <line x1="10" y1="290" x2="140" y2="290" stroke="#ffffff" stroke-width="4" />
+        <polyline points="15,315 15,270 25,260 35,270 35,315 45,315 45,270 55,260 65,270 65,315 75,315 75,270 85,260 95,270 95,315 105,315 105,270 115,260 125,270 125,315"
+                  fill="none" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" />
+      
+        <rect x="470" y="215" width="18" height="85" fill="#7a5233" />
+        <circle cx="479" cy="195" r="45" fill="#4f8a3c" />
+        <ellipse cx="420" cy="318" rx="34" ry="17" fill="#5e9c49" />
+        <circle cx="200" cy="330" r="6" fill="#e2557a" />
+        <circle cx="218" cy="338" r="6" fill="#f2b705" />
+        <circle cx="340" cy="334" r="6" fill="#e2557a" />
+      
+        <text x="20" y="385" font-family="Arial, sans-serif" font-size="18" fill="#1f2a30">Cuong's house</text>
+      </svg>
+      
+    </div>
+
+    <h2>How the coordinates work</h2>
+    <p>The origin (0, 0) is the top-left corner of the SVG. x grows to the right and y grows downwards, so the ground at y = 280 sits below the sun at y = 70. The annotated screenshot shows one example of each shape and the attributes that position it.</p>
+    <figure class="chart-block">
+      <img src="images/house-annotated.png" alt="Screenshot of the house with a 50 pixel grid and labels showing the coordinates of each SVG shape">
+      <figcaption class="note">Grid lines every 50 px. Red dots mark the coordinates named in each label.</figcaption>
+    </figure>
+
+    <h2>Grouping the windows</h2>
+    <p>Both windows sit inside one <code>&lt;g class="windows"&gt;</code>. The fill and stroke are set once on the group and inherited by both windows. Each window is its own small group moved into place with <code>transform="translate(x, y)"</code>, so the rect and lines inside it are drawn from (0, 0).</p>
+
+    <h2>The SVG in the DOM</h2>
+    <p>Browser developer tools show each shape as an element inside the <code>&lt;svg&gt;</code>, with the window groups nested inside <code>g.windows</code>.</p>
+    <figure class="chart-block">
+      <img src="images/dom-screenshot.png" alt="Browser developer tools showing the SVG elements of the house in the DOM">
+    </figure>
+  </main>
+
+  <footer>Hồ Cao Cường, 105687343. COS30045 Data Visualisation, Swinburne University of Technology.</footer>
+</body>
+</html>

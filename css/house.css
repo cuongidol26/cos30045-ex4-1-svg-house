@@ -1,0 +1,10 @@
+#house {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+figure { margin: 1rem 0 2rem; }
+figure img { display: block; width: 100%; height: auto; }
+code { font-size: .95em; }
